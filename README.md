@@ -8,7 +8,11 @@ This workshop requires the Arduino IDE. Download here: [https://www.arduino.cc/e
 
 ## Arduino IDE Setup
 
-TODO
+Install the following libraries:
+ - Adafruit_GFX
+ - Adafruit_ST7735
+ - Adafruit_SH110X
+ - GxEPD2
 
 ## Additonal Resources
 
@@ -17,3 +21,5 @@ Arduino Uno R3 Pinout: [https://docs.arduino.cc/resources/pinouts/A000066-full-p
 NodeMCU ESP32 Pinout: [https://mischianti.org/esp32-nodemcu-32s-esp-32s-kit-high-resolution-pinout-datasheet-and-specs/](https://mischianti.org/esp32-nodemcu-32s-esp-32s-kit-high-resolution-pinout-datasheet-and-specs/)
 
 E-ink Display Documentation: [https://github.com/WeActStudio/WeActStudio.EpaperModule/](https://github.com/WeActStudio/WeActStudio.EpaperModule/)
+
+image2cpp: [https://javl.github.io/image2cpp/](https://javl.github.io/image2cpp/)

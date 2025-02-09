@@ -23,8 +23,6 @@ Install the following libraries:
 
 Adafruit GFX Library Documentation: [https://adafruit.github.io/Adafruit-GFX-Library/html/class_adafruit___g_f_x.html](https://adafruit.github.io/Adafruit-GFX-Library/html/class_adafruit___g_f_x.html)
 
-Arduino Uno R3 Pinout: [https://docs.arduino.cc/resources/pinouts/A000066-full-pinout.pdf](https://docs.arduino.cc/resources/pinouts/A000066-full-pinout.pdf)
-
 NodeMCU ESP32 Pinout: [https://mischianti.org/esp32-nodemcu-32s-esp-32s-kit-high-resolution-pinout-datasheet-and-specs/](https://mischianti.org/esp32-nodemcu-32s-esp-32s-kit-high-resolution-pinout-datasheet-and-specs/)
 
 E-ink Display Documentation: [https://github.com/WeActStudio/WeActStudio.EpaperModule/](https://github.com/WeActStudio/WeActStudio.EpaperModule/)

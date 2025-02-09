@@ -10,7 +10,7 @@ This workshop requires the Arduino IDE. Download here: [https://www.arduino.cc/e
 
 Install the NodeMCU ESP32 Board:
 1. File -> Preferences -> Additional boards manager URLs: paste `https://dl.espressif.com/dl/package_esp32_index.json`
-2. Tools -> Board -> Boards Manager...: Search `ESP8266 Boards (3.1.2)` and install
+2. Tools -> Board -> Boards Manager...: Search `esp32` by Espressif and install
 
 Install the following libraries:
  - Adafruit_GFX

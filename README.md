@@ -13,10 +13,11 @@ Install the NodeMCU ESP32 Board:
 2. Tools -> Board -> Boards Manager...: Search `esp32` by Espressif and install
 
 Install the following libraries:
- - Adafruit_GFX
- - Adafruit_ST7735
- - Adafruit_SH110X
- - GxEPD2
+ - Adafruit_GFX (graphics library)
+ - Adafruit_ST7735 (blue lcd)
+ - Adafruit_ILI9341 (red lcd)
+ - Adafruit_SH110X (oled)
+ - GxEPD2 (e-ink)
 
 ## Additonal Resources
 

@@ -25,6 +25,8 @@ Adafruit GFX Library Documentation: [https://adafruit.github.io/Adafruit-GFX-Lib
 
 NodeMCU ESP32 Pinout: [https://mischianti.org/esp32-nodemcu-32s-esp-32s-kit-high-resolution-pinout-datasheet-and-specs/](https://mischianti.org/esp32-nodemcu-32s-esp-32s-kit-high-resolution-pinout-datasheet-and-specs/)
 
+Red LCD Display Documentation: [https://github.com/adafruit/Adafruit_ILI9341](https://github.com/adafruit/Adafruit_ILI9341)
+
 E-ink Display Documentation: [https://github.com/WeActStudio/WeActStudio.EpaperModule/](https://github.com/WeActStudio/WeActStudio.EpaperModule/)
 
 image2cpp: [https://javl.github.io/image2cpp/](https://javl.github.io/image2cpp/)

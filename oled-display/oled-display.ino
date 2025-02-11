@@ -1,34 +1,104 @@
-#include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SH110X.h>
+#include <Wire.h>
 
-#define i2c_Address 0x3c
+// Pinout definitions
+// VDD = 3.3V
+// GND = GND
+// SCK(SCL) = GPIO22
+// SDA = GPIO21
 
-// Define OLED dimensions
-#define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 64
-#define OLED_RESET -1   //   QT-PY / XIAO
+#define RES -1
+#define SDA 21
+#define SCK 22
 
-// Uno R3: SCL(SCK)=D19, SDA=D18
-Adafruit_SH1106G display = Adafruit_SH1106G(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+// Counter variables
+int counter = 0;
+unsigned long previousMillis = 0;
+const unsigned long interval = 1000;
+
+// Bounce animation variables
+float xPos = 64, yPos = 32;
+float xSpeed = 1.5, ySpeed = 1.2;
+int rectWidth = 20, rectHeight = 10;
+
+
+Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire, RES);
 
 void setup() {
   Serial.begin(115200);
+  Serial.println("OLED");
+  Wire.begin(SDA, SCK);
 
-  // Initialize the SH1106 OLED display
-  display.begin(i2c_Address, true);
-
-  // Clear the display and set up text
+  display.begin(0x3c);
+  display.setTextColor(SH110X_WHITE);
   display.clearDisplay();
-  display.setTextColor(SH110X_WHITE);  // Set text color
-  display.setTextSize(1);  // Set text size
-  display.setCursor(0, 0);  // Set cursor to the top-left corner
-  display.println(F("Hello, World!"));
-  display.display();
+
+  // displayText();
 }
 
 void loop() {
-  // Nothing to do here
+  // counterLoop();
+  bounceLoop();
 }
 
+void displayText() {
+  display.setCursor(10, 10);
+  display.println("Hello World!");
+  display.display();
+}
+
+void counterLoop() {
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+    updateCounter();
+  }
+}
+
+void updateCounter() {
+  display.fillScreen(SH110X_BLACK);
+
+  display.setCursor(10, 10);
+  display.print("Count: ");
+  display.print(counter);
+  display.display();
+
+  counter++;
+}
+
+void bounceLoop() {
+  static unsigned long lastUpdate = 0;
+  const unsigned long frameDelay = 16; // ~60 FPS
+  
+  if(millis() - lastUpdate >= frameDelay) {
+    lastUpdate = millis();
+    
+    updatePosition();
+    checkBoundaries();
+    drawBounceRect();
+  }
+}
+
+void updatePosition() {
+  xPos += xSpeed;
+  yPos += ySpeed;
+}
+
+void checkBoundaries() {
+  if(xPos <= 0 || xPos >= 128 - rectWidth) {
+    xSpeed = -xSpeed;
+  }
+  
+  if(yPos <= 0 || yPos >= 64 - rectHeight) {
+    ySpeed = -ySpeed;
+  }
+}
+
+void drawBounceRect() {
+  display.clearDisplay();
+  display.fillRect(xPos, yPos, rectWidth, rectHeight, SH110X_WHITE);
+  display.display();
+}
 

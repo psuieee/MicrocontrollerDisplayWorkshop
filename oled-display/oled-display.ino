@@ -12,17 +12,6 @@
 #define SDA 21
 #define SCK 22
 
-// Counter variables
-int counter = 0;
-unsigned long previousMillis = 0;
-const unsigned long interval = 1000;
-
-// Bounce animation variables
-float xPos = 64, yPos = 32;
-float xSpeed = 1.5, ySpeed = 1.2;
-int rectWidth = 20, rectHeight = 10;
-
-
 Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire, RES);
 
 void setup() {
@@ -34,12 +23,13 @@ void setup() {
   display.setTextColor(SH110X_WHITE);
   display.clearDisplay();
 
-  // displayText();
+  displayText();
 }
 
 void loop() {
   // counterLoop();
-  bounceLoop();
+  // scrollText();
+  // bounceLoop();
 }
 
 void displayText() {
@@ -49,6 +39,9 @@ void displayText() {
 }
 
 void counterLoop() {
+  static int counter = 0;
+  static unsigned long previousMillis = 0;
+  const unsigned long interval = 1000;
   unsigned long currentMillis = millis();
 
   if (currentMillis - previousMillis >= interval) {
@@ -68,7 +61,30 @@ void updateCounter() {
   counter++;
 }
 
+void scrollText() {
+  String message = "Hello, this is a scrolling message!";
+  int speed = 2;
+  static int x = display.width();
+  static unsigned long lastScroll = 0;
+  
+  if (millis() - lastScroll >= (speed * 10)) {
+    display.clearDisplay();
+    display.setCursor(x, 32);
+    display.print(message);
+    display.display();
+    
+    x--;
+    if (x < -(message.length() * 6)) {
+      x = display.width();
+    }
+    lastScroll = millis();
+  }
+}
+
 void bounceLoop() {
+  static float xPos = 64, yPos = 32;
+  static float xSpeed = 1.5, ySpeed = 1.2;
+  static int rectWidth = 20, rectHeight = 10;
   static unsigned long lastUpdate = 0;
   const unsigned long frameDelay = 16; // ~60 FPS
   
@@ -101,4 +117,5 @@ void drawBounceRect() {
   display.fillRect(xPos, yPos, rectWidth, rectHeight, SH110X_WHITE);
   display.display();
 }
+
 

@@ -5,7 +5,7 @@
 // Pinout definitions
 // VDD = 3.3V
 // GND = GND
-// SCK(SCL) = GPIO22
+// SCL = GPIO22
 // SDA = GPIO21
 
 #define RES -1

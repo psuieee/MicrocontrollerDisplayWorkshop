@@ -27,6 +27,7 @@ void setup() {
 }
 
 void loop() {
+  // Try out these functions!
   // counterLoop();
   // scrollText();
   // bounceLoop();

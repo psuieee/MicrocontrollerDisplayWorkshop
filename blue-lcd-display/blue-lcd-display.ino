@@ -25,6 +25,7 @@ void setup() {
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST7735_BLACK);
 
+  // Try out these functions!
   displayText();
   // displayImage();
   // weAre();

@@ -27,6 +27,7 @@ void setup(void) {
   tft.invertDisplay(false);
   tft.fillScreen(ST77XX_BLACK);
 
+  // Try out these functions!
   displayText();
   // displayImage();
   // weAre();

@@ -28,8 +28,10 @@ void setup()
 {
   display.init(115200, true, 50, false);
 
+  // Try out these functions!
   nameTag();
   // displayImage();
+  
   display.hibernate();
 }
 

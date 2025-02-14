@@ -3,11 +3,16 @@
 #include <Wire.h>
 
 // Pinout definitions
-#define RES -1
-#define SDA 21
-#define SCK 22
+// GND = GND
+// VCC = 3.3V
+// SCL = GPIO22
+// SDA = GPIO21
 
-Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire, RES);
+#define RES -1
+#define SCL 22
+#define SDA 21
+
+Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire, RES); // 128x64
 
 // Global variables
 int count = 0;
@@ -23,7 +28,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println("OLED");
 
-  Wire.begin(SDA, SCK);
+  Wire.begin(SDA, SCL);
   display.begin(0x3c);
   display.setTextColor(SH110X_WHITE);
   display.clearDisplay();

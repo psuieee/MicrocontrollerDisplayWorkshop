@@ -7,14 +7,14 @@
 // GND = GND
 // CS(SS) = GPIO5
 // RES = 3.3V
-// DC = GPIO0
+// DC = GPIO4
 // SDI(MOSI) = GPIO23
 // SCK(SCL) = GPIO18
 // LED = 3.3V
 // other pins can be ignored
 
 #define CS 5
-#define DC 0
+#define DC 4
 #define RES -1
 
 Adafruit_ST7789 tft = Adafruit_ST7789(CS, DC, RES); // 240x320
@@ -27,6 +27,7 @@ void setup(void) {
   tft.invertDisplay(false);
   tft.fillScreen(ST77XX_BLACK);
 
+  // Try out these functions!
   displayText();
   // displayImage();
   // weAre();
@@ -52,7 +53,7 @@ void weAre() {
   uint16_t w, h;
   
   tft.setTextSize(3);
-  tft.getTextBounds(text, 0, 0, &x1, &y1, &w, &h);
+  tft.getTextBounds(text, 0, 0, &x1, &y1, &w, &h); // get width and height for centering text
   int x = (tft.width() - w) / 2;
   int y = 260;
   

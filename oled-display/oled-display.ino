@@ -3,22 +3,27 @@
 #include <Wire.h>
 
 // Pinout definitions
-// VDD = 3.3V
-// GND = GND
-// SCL = GPIO22
-// SDA = GPIO21
-
 #define RES -1
 #define SDA 21
 #define SCK 22
 
 Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire, RES);
 
+// Global variables
+int count = 0;
+unsigned long previousMillis = 0;
+int x = 0;
+unsigned long lastScroll = 0;
+float xPos = 64.0, yPos = 32.0;
+float xSpeed = 1.5, ySpeed = 1.2;
+int rectWidth = 20, rectHeight = 10;
+unsigned long lastUpdate = 0;
+
 void setup() {
   Serial.begin(115200);
   Serial.println("OLED");
-  Wire.begin(SDA, SCK);
 
+  Wire.begin(SDA, SCK);
   display.begin(0x3c);
   display.setTextColor(SH110X_WHITE);
   display.clearDisplay();
@@ -27,9 +32,10 @@ void setup() {
 }
 
 void loop() {
-  // counterLoop();
+  // Try out these functions!
+  // counter();
   // scrollText();
-  // bounceLoop();
+  // bounce();
 }
 
 void displayText() {
@@ -38,9 +44,7 @@ void displayText() {
   display.display();
 }
 
-void counterLoop() {
-  static int counter = 0;
-  static unsigned long previousMillis = 0;
+void counter() {
   const unsigned long interval = 1000;
   unsigned long currentMillis = millis();
 
@@ -52,40 +56,44 @@ void counterLoop() {
 
 void updateCounter() {
   display.fillScreen(SH110X_BLACK);
-
   display.setCursor(10, 10);
   display.print("Count: ");
-  display.print(counter);
+  display.print(count);
   display.display();
-
-  counter++;
+  count++;
 }
 
 void scrollText() {
   String message = "Hello, this is a scrolling message!";
   int speed = 2;
+  
   static int x = display.width();
   static unsigned long lastScroll = 0;
+  display.setTextWrap(false);
   
   if (millis() - lastScroll >= (speed * 10)) {
     display.clearDisplay();
-    display.setCursor(x, 32);
+    
+    int posY = 32;
+    display.setCursor(x, posY);
     display.print(message);
     display.display();
     
+    int16_t bx, by;
+    uint16_t textWidth, textHeight;
+    display.getTextBounds(message, x, posY, &bx, &by, &textWidth, &textHeight);
+    
     x--;
-    if (x < -(message.length() * 6)) {
+    if (x < -((int)textWidth)) {
       x = display.width();
     }
+    
     lastScroll = millis();
   }
 }
 
-void bounceLoop() {
-  static float xPos = 64, yPos = 32;
-  static float xSpeed = 1.5, ySpeed = 1.2;
-  static int rectWidth = 20, rectHeight = 10;
-  static unsigned long lastUpdate = 0;
+
+void bounce() {
   const unsigned long frameDelay = 16; // ~60 FPS
   
   if(millis() - lastUpdate >= frameDelay) {
@@ -117,5 +125,3 @@ void drawBounceRect() {
   display.fillRect(xPos, yPos, rectWidth, rectHeight, SH110X_WHITE);
   display.display();
 }
-
-

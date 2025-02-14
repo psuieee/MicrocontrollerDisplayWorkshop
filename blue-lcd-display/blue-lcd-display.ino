@@ -8,12 +8,12 @@
 // SCL(SCK) = GPIO18
 // SDA(MOSI) = GPIO23
 // RES = 3.3V
-// DC = GPIO0
+// DC = GPIO4
 // CS(SS) = GPIO5
 // BL = 3.3V
 
 #define CS 5
-#define DC 0
+#define DC 4
 #define RES -1
 
 Adafruit_ST7735 tft = Adafruit_ST7735(CS, DC, RES); // 128x160
@@ -51,7 +51,7 @@ void weAre() {
   uint16_t w, h;
   
   tft.setTextSize(2);
-  tft.getTextBounds(text, 0, 0, &x1, &y1, &w, &h);
+  tft.getTextBounds(text, 0, 0, &x1, &y1, &w, &h); // get width and height for centering text
   int x = (tft.width() - w) / 2;
   int y = 10;
   

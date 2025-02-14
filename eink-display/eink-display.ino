@@ -11,29 +11,33 @@
 // GND = GND
 // SDA(MOSI) = GPIO23
 // SCL(SCK) = GPIO18
-// CS(SS) = 5
-// DC = 0
-// RES = 2
-// BUSY = 15
+// CS(SS) = GPIO5
+// DC = GPIO4
+// RES = GPIO2
+// BUSY = GPIO15
 
 #define CS 5
-#define DC 0
+#define DC 4
 #define RES 2
 #define BUSY 15
 
-GxEPD2_3C<GxEPD2_213_Z98c, GxEPD2_213_Z98c::HEIGHT> display(GxEPD2_213_Z98c(CS, DC, RES, BUSY));
+GxEPD2_BW<GxEPD2_213_Z98c, GxEPD2_213_Z98c::HEIGHT> display(GxEPD2_213_Z98c(CS, DC, RES, BUSY)); // 250x122
 
 
 void setup()
 {
   display.init(115200, true, 50, false);
 
-  nameTag();
-  // displayImage();
+  // Try out these functions!
+  // nameTag();
+  displayImage();
+
   display.hibernate();
 }
 
 void displayImage() {
+  // for some reason the image displays with inverted colors
+  // when creating your bitmap check "invert image colors" for it to display correctly
   int imgWidth = 250;
   int imgHeight = 122;
   int x = 0;
@@ -44,7 +48,7 @@ void displayImage() {
   display.firstPage();
   do {
     display.fillScreen(GxEPD_WHITE);
-    display.drawBitmap(x, y, psuLogo, imgWidth, imgHeight, GxEPD_BLACK);
+    display.drawBitmap(x, y, psuieee, imgWidth, imgHeight, GxEPD_BLACK);
   } while (display.nextPage());
 }
 
@@ -57,7 +61,7 @@ void nameTag()
   display.setTextColor(GxEPD_BLACK);
   
   int16_t tbx, tby; uint16_t tbw, tbh;
-  display.getTextBounds(name, 0, 0, &tbx, &tby, &tbw, &tbh);
+  display.getTextBounds(name, 0, 0, &tbx, &tby, &tbw, &tbh); // get width and height for centering text
   uint16_t x = ((display.width() - tbw) / 2) - tbx;
   uint16_t y = ((display.height() - tbh) / 2) - tby;
   display.setFullWindow();
@@ -68,8 +72,7 @@ void nameTag()
     display.setCursor(x, y-tbh);
     display.print(name);
     display.setFont(&FreeMonoBold9pt7b);
-    display.setTextColor(display.epd2.hasColor ? GxEPD_RED : GxEPD_BLACK);
-    display.getTextBounds(major, 0, 0, &tbx, &tby, &tbw, &tbh);
+    display.getTextBounds(major, 0, 0, &tbx, &tby, &tbw, &tbh); // get width and height for centering text
     x = ((display.width() - tbw) / 2) - tbx;
     display.setCursor(x, y+tbh);
     display.print(major);

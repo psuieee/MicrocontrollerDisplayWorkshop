@@ -3,9 +3,12 @@
 #include <Wire.h>
 
 // Pinout definitions
+// GND = GND
+// VCC = 3.3V
+// SCL = GPIO22
+// SDA = GPIO21
+
 #define RES -1
-#define SDA 21
-#define SCK 22
 
 Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire, RES); // 128x64
 

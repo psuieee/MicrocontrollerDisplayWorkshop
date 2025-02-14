@@ -7,7 +7,7 @@
 #define SDA 21
 #define SCK 22
 
-Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire, RES);
+Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire, RES); // 128x64
 
 // Global variables
 int count = 0;

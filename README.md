@@ -18,7 +18,8 @@ Install the following libraries from library manager (Tools -> Manage Libraries.
  - Adafruit ST7735 and ST7789 Library by Adafruit
  - Adafruit SH110X by Adafruit 
  - GxEPD2 by Jean-Marc Zingg
-Click "install all" when prompted
+
+Click "install all" when prompted.
 
 ## Additonal Resources
 

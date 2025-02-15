@@ -8,15 +8,17 @@ This workshop requires the Arduino IDE. Download here: [https://www.arduino.cc/e
 
 ## Arduino IDE Setup
 
-Install the NodeMCU ESP32 Board:
+Install and setup the ESP32 Board:
 1. File -> Preferences -> Additional boards manager URLs: paste `https://dl.espressif.com/dl/package_esp32_index.json`
 2. Tools -> Board -> Boards Manager...: Search `esp32` by Espressif and install
+3. Click "select other board and port" from the board dropdown in the top left, then select "DOIT ESP32 DEVKIT V1" and your respective port, then press "OK"
 
 Install the following libraries from library manager (Tools -> Manage Libraries...):
  - Adafruit GFX Library by Adafruit
  - Adafruit ST7735 and ST7789 Library by Adafruit
  - Adafruit SH110X by Adafruit 
  - GxEPD2 by Jean-Marc Zingg
+* Click "install all" when prompted
 
 ## Additonal Resources
 

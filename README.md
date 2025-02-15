@@ -13,13 +13,11 @@ Install and setup the ESP32 Board:
 2. Tools -> Board -> Boards Manager...: Search `esp32` by Espressif and install
 3. Click "select other board and port" from the board dropdown in the top left, then select "DOIT ESP32 DEVKIT V1" and your respective port, then press "OK"
 
-Install the following libraries from library manager (Tools -> Manage Libraries...):
+Install the following libraries from library manager (Tools -> Manage Libraries...). Click "install all" when prompted:
  - Adafruit GFX Library by Adafruit
  - Adafruit ST7735 and ST7789 Library by Adafruit
  - Adafruit SH110X by Adafruit 
  - GxEPD2 by Jean-Marc Zingg
-
-Click "install all" when prompted.
 
 ## Additonal Resources
 

@@ -30,3 +30,5 @@ OLED Display Driver Documentation: [https://github.com/adafruit/Adafruit_SH110x]
 E-ink Display Driver Documentation: [https://github.com/WeActStudio/WeActStudio.EpaperModule/](https://github.com/WeActStudio/WeActStudio.EpaperModule/)
 
 image2cpp: [https://javl.github.io/image2cpp/](https://javl.github.io/image2cpp/)
+
+If having difficulties connecting your board, try installing these drivers: [https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers](https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers)
